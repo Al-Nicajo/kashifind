@@ -31,8 +31,14 @@ p {
     margin-bottom: 20px;
 }
 
-.search-bar {
+.search-wrapper {
+    position: relative;
+    display: inline-block;
     width: 80%;
+}
+
+.search-bar {
+    width: 100%;
     padding: 10px;
     border: 2px solid #ccc;
     border-radius: 8px;
@@ -44,6 +50,26 @@ p {
     border-color: #007BFF;
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
     transform: scale(1.05);
+}
+
+.add-doc-btn {
+    position: absolute;
+    top: 50%;
+    right: -35px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.add-doc-btn:hover {
+    background-color: #0056b3;
 }
 
 .search-btn {
