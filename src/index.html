@@ -11,10 +11,91 @@
         <h1>DocuFinder</h1>
         <p>Encuentra documentación y expertos fácilmente.</p>
         <div class="search-wrapper">
-            <input type="text" class="search-bar" placeholder="Buscar API, documentación o experto...">
+            <input type="text" class="search-bar" placeholder="Buscar documentación...">
             <button class="add-doc-btn">+</button>
+        </div>
+        <div class="search-wrapper tags-container">
+            <div class="tags"></div>
+            <input type="text" class="tag-input" placeholder="Buscar por etiquetas...">
         </div>
         <button class="search-btn">Buscar</button>
     </div>
+    <script src="index.js"></script>
+    <style>
+        .tags-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            width: 80%;
+            background: white;
+            min-height: 40px;
+            cursor: text;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .tag {
+            display: flex;
+            align-items: center;
+            background-color: #007BFF;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.3s;
+            user-select: none;
+        }
+
+        .tag.highlight {
+            background-color: #0056b3;
+        }
+
+        .remove-tag {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 8px;
+            margin-left: 5px;
+            cursor: pointer;
+            position: relative;
+            display: none;
+        }
+
+        .tag:hover .remove-tag {
+            display: inline;
+        }
+
+        .remove-tag:hover::before {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .tag-input {
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 5px;
+            flex-grow: 1;
+            min-width: 50px;
+        }
+    </style>
 </body>
 </html>
