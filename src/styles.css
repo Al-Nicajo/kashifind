@@ -221,7 +221,10 @@ input:checked + .slider::before {
 /* Resultados de búsqueda y tal */
 
 .search-results {
-    width: 100%;
+    z-index: 10;
+    position: absolute;
+    top: 475px;
+    width: 338px;
     max-height: 200px; /* Limit height to avoid overflow */
     overflow-y: auto; /* Enable scrolling for long results */
     background: white;

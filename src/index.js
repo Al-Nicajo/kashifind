@@ -54,31 +54,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
+    
     const button = document.querySelector(".filter-button");
     const dropdown = document.querySelector(".filter-dropdown");
-
-    // Check if the button and dropdown exist
-    if (!button) {
-        console.error("Filter button not found!");
-    }
-    if (!dropdown) {
-        console.error("Filter dropdown not found!");
-    }
-
-    // Define the toggleDropdown function
-    function toggleDropdown() {
-        if (dropdown) {
-            console.log("Toggling dropdown...");  // Debugging line
-            dropdown.classList.toggle("show");
-        }
-    }
-
-    // Add event listener for the button click
-    button.addEventListener("click", toggleDropdown);
-    
     const searchInput = document.querySelector(".search-bar");
     const resultsContainer = document.querySelector(".search-results");
+
+    if (!button) console.error("Filter button not found!");
+    if (!dropdown) console.error("Filter dropdown not found!");
+
+    function toggleDropdown(event) {
+        event.stopPropagation(); // Prevent unwanted closing when clicking inside
+        dropdown.classList.toggle("show");
+    }
+
+    button.addEventListener("click", toggleDropdown);
 
     // Sample search data (replace with real data later)
     const documents = [
@@ -94,26 +87,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function filterResults(query) {
         resultsContainer.innerHTML = ""; // Clear previous results
+
         if (!query.trim()) {
             resultsContainer.style.display = "none";
             return;
         }
 
-        const filtered = documents.filter(doc => doc.toLowerCase().includes(query.toLowerCase()));
+        const regex = new RegExp(`\\b${query}`, 'i'); // Match standalone or words starting with query
+        const filtered = documents.filter(doc => regex.test(doc)); 
 
         if (filtered.length > 0) {
             filtered.forEach(doc => {
                 const resultItem = document.createElement("div");
                 resultItem.textContent = doc;
                 resultItem.addEventListener("click", () => {
-                    searchInput.value = doc; // Set input to selected result
-                    resultsContainer.style.display = "none"; // Hide results after selection
+                    searchInput.value = doc; 
+                    resultsContainer.style.display = "none"; 
                 });
                 resultsContainer.appendChild(resultItem);
             });
-            resultsContainer.style.display = "block"; // Show results if found
+            resultsContainer.style.display = "block";
         } else {
-            resultsContainer.style.display = "none"; // Hide if no matches
+            resultsContainer.style.display = "none";
         }
     }
 
@@ -121,10 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
         filterResults(searchInput.value);
     });
 
-    // Hide results when clicking outside
-    document.addEventListener("click", (e) => {
-        if (!searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
-            resultsContainer.style.display = "none";
-        }
-    });
+    // Prevent search from resetting when interacting with the filter dropdown
+    dropdown.addEventListener("click", (event) => event.stopPropagation());
 });
+
