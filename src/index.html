@@ -8,10 +8,24 @@
 </head>
 <body>
     <div class="container">
-        <h1>KashiFind</h1>
-        <p>Buscador de documentación de expertos.</p>
+       <div class="mainHeader">
+            <h1 class="mainTitle">KashiFind</h1>
+            <a class="mainButton" id="uploadMode" href="upload.html">
+                <svg fill="#fff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+        viewBox="0 0 374.116 374.116" xml:space="preserve">
+        <g>
+            <path d="M344.058,207.506c-16.568,0-30,13.432-30,30v76.609h-254v-76.609c0-16.568-13.432-30-30-30c-16.568,0-30,13.432-30,30
+                v106.609c0,16.568,13.432,30,30,30h314c16.568,0,30-13.432,30-30V237.506C374.058,220.938,360.626,207.506,344.058,207.506z"/>
+            <path d="M123.57,135.915l33.488-33.488v111.775c0,16.568,13.432,30,30,30c16.568,0,30-13.432,30-30V102.426l33.488,33.488
+                c5.857,5.858,13.535,8.787,21.213,8.787c7.678,0,15.355-2.929,21.213-8.787c11.716-11.716,11.716-30.71,0-42.426L208.271,8.788
+                c-11.715-11.717-30.711-11.717-42.426,0L81.144,93.489c-11.716,11.716-11.716,30.71,0,42.426
+                C92.859,147.631,111.855,147.631,123.57,135.915z"/>
+        </g>
+    </svg>
+                </a>
+       </div>
         <div class="search-wrapper">
-            <input type="text" class="search-bar" placeholder="Buscar documentación...">
+            <input type="text" class="search-bar" placeholder="Search documentation...">
             <button class="filter-button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter">
                     <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
@@ -20,9 +34,8 @@
         </div>        
         <div class="search-wrapper tags-container">
             <div class="tags"></div>
-            <input type="text" class="tag-input" placeholder="Buscar por etiquetas...">
+            <input type="text" class="tag-input" placeholder="Search by tags...">
         </div>
-        <button class="search-btn">Buscar</button>
 
         <div class="filter-dropdown">
             <div class="dropdown-content">
@@ -35,14 +48,14 @@
                     </label>
                 </label>
                 <label>
-                    Documentación
+                    Documentation
                     <label class="switch">
                         <input type="checkbox">
                         <span class="slider"></span>
                     </label>
                 </label>
                 <label>
-                    Usuarios
+                    Users
                     <label class="switch">
                         <input type="checkbox">
                         <span class="slider"></span>

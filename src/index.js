@@ -18,8 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const removeBtn = document.createElement("button");
         removeBtn.innerHTML = "&times;";
         removeBtn.classList.add("remove-tag");
-        removeBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
+
+        // Eliminar etiqueta
+        tag.addEventListener("click", () => {
             tag.remove();
         });
         

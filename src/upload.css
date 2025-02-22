@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    background: white;
+    z-index: 10;
+    padding: 20px;
+    border-radius: 0px;
+}
+
+/* Sombra elevada */
+.container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+    z-index: 15; /* Mayor que el dropdown */
+    pointer-events: none; /* No bloquea clics */
+    border-radius: 0px 
+}
+.upload-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.anchor-button {
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #007bff;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.anchor-button:hover {
+    text-decoration: underline;
+}
+
+/* Discontinuous square upload area */
+.discontinuous-upload-area {
+    position: relative;
+    width: px;
+    height: 150px;
+    margin-bottom: 20px;
+    margin-top: ;
+    background-color: rgb(255, 255, 255);
+    border: 4px dashed rgb(0, 110, 255); /* Green discontinuous outline */
+    clip-path: (10% 10%, 40% 10%, 30% 40%, 70% 40%, 60% 10%, 90% 10%, 100% 50%, 60% 80%, 20% 80%, 10% 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 15px; /* Rounded corners */
+}
+
+/* File input is hidden but functional */
+#fileInput {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Text inside the upload area */
+.upload-text {
+    color: rgba(0, 89, 255, 0.514);
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Dropdown Styles */
+#dropdown {
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#dropdown:hover {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form input,
+form textarea,
+form button,
+form select {
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+.tags-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    background: white;
+    min-height: 30px;
+    cursor: text;
+
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    background-color: #007BFF;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s;
+    user-select: none;
+    transition: transform 0.3s ease;
+    transform: scale(1);
+}
+
+.tag:hover, .tag:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.tag.highlight {
+    background-color: #0056b3;
+}
+
+.remove-tag {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 8px;
+    margin-left: 5px;
+    cursor: pointer;
+    position: relative;
+    display: none;
+}
+
+.tag:hover .remove-tag {
+    display: inline;
+}
+
+.remove-tag:hover::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.tag-input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+    flex-grow: 1;
+    min-width: 50px;
+}
+
+.mainHeader {
+    display: flex;                /* Flexbox layout */
+    align-items: center;          /* Vertically centers the items */
+}
+
+.mainTitle {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: left;
+    font-size: 24px;
+    margin-left: 0;
+    margin-bottom: 10px;
+}
+
+.mainButton {
+    font-size: 14px;
+    padding: 10px 10px;
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    background-color: #888;
+    border: none;
+    border-radius: 25%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.mainButton:hover {
+    background-color: #1976d2;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.mainButton:active {
+    background-color: #1565c0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

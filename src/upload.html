@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload Page</title>
+    <link rel="stylesheet" href="upload.css">
+</head>
+<body>
+    <div class="container">
+        <!-- File Upload Form -->
+        <div class="form-section">
+            <!-- Title over the upload area -->
+            <div class="mainHeader">
+                <h1 class="mainTitle">KashiFind</h1>
+                <a class="mainButton" id="uploadMode" href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 490 490">
+                        <path fill="none" stroke="white" stroke-width="36" stroke-linecap="round"
+                            d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110" />
+                    </svg>
+                </a>
+           </div>
+           
+            <div class="discontinuous-upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="image/*" onchange=handleFileChange(event)>
+                <div class="upload-text" id="textarea">Drag & Drop or Click to Upload (MAX 500MB)</div>
+                <div id="container"></div>
+            </div>
+
+            <!-- Hidden form elements that will show after file is uploaded -->
+            <div id="formOptions" class="filter-dropdown" style="display: none;">
+                <form id="myForm">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required></textarea>
+
+                    <label for="tags">Tags:</label>
+                    <div class="search-wrapper tags-container">
+                        <div class="tags"></div>
+                        <input type="text" class="tag-input" placeholder="Buscar por etiquetas...">
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="upload.js"></script>
+</body>
+</html>
