@@ -32,24 +32,29 @@ p {
 }
 
 .search-wrapper {
-    position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     width: 80%;
+    position: relative;
+    margin-bottom: 10px;
+    
 }
 
-.search-bar {
-    width: 100%;
+.search-bar,
+.tag-input {
+    flex: 1;
     padding: 10px;
     border: 2px solid #ccc;
     border-radius: 8px;
     font-size: 16px;
-    transition: all 0.3s ease;
+    
 }
 
 .search-bar:hover, .search-bar:focus {
     border-color: #007BFF;
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
     transform: scale(1.05);
+    
 }
 
 .add-doc-btn {
@@ -85,5 +90,5 @@ p {
 }
 
 .search-btn:hover {
-    background-color: #0056b3;
+    background-color: #0056b3;
 }
