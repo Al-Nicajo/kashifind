@@ -5,24 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KashiFind</title>
     <link rel="stylesheet" href="styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVG Implementado</title>
 </head>
-<body>    
+<body>
     <div class="container">
         <h1>KashiFind</h1>
         <p>Buscador de documentación de expertos.</p>
-        <input type="text" class="search-bar" placeholder="Buscar API, documentación o experto...">
+        <div class="search-wrapper">
+            <input type="text" class="search-bar" placeholder="Buscar documentación...">
+            <button class="filter-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+            </button>
+        </div>        
+        <div class="search-wrapper tags-container">
+            <div class="tags"></div>
+            <input type="text" class="tag-input" placeholder="Buscar por etiquetas...">
+        </div>
         <button class="search-btn">Buscar</button>
 
-
-        <!-- Botón de filtros -->
         <div class="filter-dropdown">
-            <button class="filter-button" onclick="toggleDropdown()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg> 
-                
-            </button>
             <div class="dropdown-content">
                
                 <label>
@@ -49,16 +51,94 @@
                 <label>
             </div>
         </div>
-
     </div>
-
-    <script>
-        function toggleDropdown() {
-            document.querySelector(".filter-dropdown").classList.toggle("show");
+    
+    <style>
+        .tags-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            width: 100%;
+            background: white;
+            min-height: 30px;
+            cursor: text;
+            
         }
-    </script>
 
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            align-items: center;
+        }
 
+        .tag {
+            display: flex;
+            align-items: center;
+            background-color: #007BFF;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.3s;
+            user-select: none;
+            transition: transform 0.3s ease;
+            transform: scale(1);
+        }
 
+        .tag:hover, .tag:focus {
+            border-color: #007BFF;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .tag.highlight {
+            background-color: #0056b3;
+        }
+
+        .remove-tag {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 8px;
+            margin-left: 5px;
+            cursor: pointer;
+            position: relative;
+            display: none;
+        }
+
+        .tag:hover .remove-tag {
+            display: inline;
+        }
+
+        .remove-tag:hover::before {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .tag-input {
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 5px;
+            flex-grow: 1;
+            min-width: 50px;
+        }
+    </style>
+
+    <script src="index.js"></script>
 </body>
 </html>

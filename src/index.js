@@ -53,3 +53,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const button = document.querySelector(".filter-button");
+    const dropdown = document.querySelector(".filter-dropdown");
+
+    // Check if the button and dropdown exist
+    if (!button) {
+        console.error("Filter button not found!");
+    }
+    if (!dropdown) {
+        console.error("Filter dropdown not found!");
+    }
+
+    // Define the toggleDropdown function
+    function toggleDropdown() {
+        if (dropdown) {
+            console.log("Toggling dropdown...");  // Debugging line
+            dropdown.classList.toggle("show");
+        }
+    }
+
+    // Add event listener for the button click
+    button.addEventListener("click", toggleDropdown);
+});
