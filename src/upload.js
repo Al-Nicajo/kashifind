@@ -178,6 +178,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Fetch existing tags from Supabase
     async function fetchTags() {
         const { data, error } = await supabase.from("tags").select("name");
+        console.log(data);
+        console.log(error);
         if (!error) {
             existingTags = data.map(tag => tag.name);
         }
