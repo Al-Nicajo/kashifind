@@ -82,7 +82,7 @@ p {
 }
 
 .search-bar:hover, .search-bar:focus {
-    border-color: #007BFF;
+    border-color: #eb2028;
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
 }
 
@@ -132,12 +132,12 @@ p {
 
 /* Botón de filtros */
 .filter-button {
-    background-color: #28a745;
+    background-color: #eb2028;
     color: white;
 }
 
 .filter-button:hover{
-    background-color: #1e7e34;
+    background-color: #b0181e;
 }
 
 /* Contenedor del dropdown */
@@ -203,7 +203,7 @@ p {
     content: "";
     height: 16px;
     width: 16px;
-    left: 4px;
+    left: 3.5px;
     bottom: 3px;
     background-color: white;
     border-radius: 50%;
@@ -216,4 +216,30 @@ input:checked + .slider {
 
 input:checked + .slider::before {
     transform: translateX(18px);
+}
+
+/* Resultados de búsqueda y tal */
+
+.search-results {
+    width: 100%;
+    max-height: 200px; /* Limit height to avoid overflow */
+    overflow-y: auto; /* Enable scrolling for long results */
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
+    display: none; /* Hidden until results appear */
+}
+
+.search-results div {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+}
+
+.search-results div:hover {
+    background: #f0f0f0;
 }
