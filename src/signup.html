@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Menu</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="/login.css"> 
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button>Login</button>  
+        </form>
+       
+    </div>
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+         const supabase = createClient(
+                'https://fklqhqagyyrmsmhksgct.supabase.co',  // Reemplaza con tu URL de Supabase
+                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZrbHFocWFneXlybXNtaGtzZ2N0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAyMjYwOTAsImV4cCI6MjA1NTgwMjA5MH0.8pIc0wosjnUVrkJDw-4VjtxTnpYexgzcMG3qHWfI_eE' // Reemplaza con tu Anon Key
+        );
+
+        const form = document.getElementById("form");
+
+        form.addEventListener("submit", async function (event) {
+            event.preventDefault();
+           
+            let email = document.getElementById("username").value;
+            let password = document.getElementById("password").value; 
+            const { data, error } = await supabase.auth.signUp({
+                email: email,
+                password: password
+            });
+
+            console.log(data);
+            console.log(error);
+
+        });
+    </script>
+</body>
+</html>
