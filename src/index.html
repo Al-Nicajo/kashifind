@@ -5,18 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KashiFind</title>
     <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Implementado</title>
 </head>
-<body>
+<body>    
     <div class="container">
         <h1>KashiFind</h1>
         <p>Buscador de documentación de expertos.</p>
         <input type="text" class="search-bar" placeholder="Buscar API, documentación o experto...">
         <button class="search-btn">Buscar</button>
 
+
         <!-- Botón de filtros -->
         <div class="filter-dropdown">
-            <button class="filter-button" onclick="toggleDropdown()">Filtros </button>
+            <button class="filter-button" onclick="toggleDropdown()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg> 
+                
+            </button>
             <div class="dropdown-content">
+               
                 <label>
                     APIs
                     <label class="switch">
@@ -32,7 +40,7 @@
                     </label>
                 </label>
                 <label>
-                    Expertos
+                    Usuarios
                     <label class="switch">
                         <input type="checkbox">
                         <span class="slider"></span>
