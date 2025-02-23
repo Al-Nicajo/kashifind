@@ -149,3 +149,78 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdown.addEventListener("click", (event) => event.stopPropagation());
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.querySelector(".search-bar");
+    const resultsContainer = document.querySelector(".search-results");
+
+    async function searchDatabase(query) {
+        if (!query.trim()) {
+            resultsContainer.innerHTML = "";
+            resultsContainer.style.display = "none"; // Hide results when input is empty
+            return;
+        }
+
+        const searchTerms = query.toLowerCase().split(" "); // Split by spaces
+
+        try {
+            // Fetch all rows from both tables
+            const { data: docdataResults, error: docdataError } = await supabase.from('docdata').select('*');
+            const { data: usrResults, error: usrError } = await supabase.from('usr').select('*');
+
+            if (docdataError) console.error("Error fetching docdata:", docdataError);
+            if (usrError) console.error("Error fetching usr:", usrError);
+
+            // Merge both tables into one array
+            const allResults = [...(docdataResults || []), ...(usrResults || [])];
+
+            // Filter rows where at least one search term matches any field
+            const filteredResults = allResults.filter(row => {
+                return Object.values(row).some(value =>
+                    typeof value === "string" && searchTerms.some(term => value.toLowerCase().includes(term))
+                );
+            });
+
+            // Display results
+            displayResults(filteredResults);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+    function displayResults(results) {
+        resultsContainer.innerHTML = ""; // Clear previous results
+
+        if (results.length === 0) {
+            resultsContainer.style.display = "none"; // Hide container if no results
+            return;
+        }
+
+        resultsContainer.style.display = "grid"; // Use grid layout
+        resultsContainer.style.gridTemplateColumns = "repeat(auto-fit, minmax(250px, 1fr))"; // Responsive grid
+        resultsContainer.style.gap = "10px";
+
+        results.forEach(result => {
+            const resultItem = document.createElement("div");
+            resultItem.classList.add("result-item");
+
+            // Style for each box
+            resultItem.style.border = "1px solid #ccc";
+            resultItem.style.borderRadius = "8px";
+            resultItem.style.padding = "15px";
+            resultItem.style.backgroundColor = "#f9f9f9";
+            resultItem.style.boxShadow = "2px 2px 10px rgba(0,0,0,0.1)";
+
+            // Format the result
+            resultItem.innerHTML = `<strong>ID:</strong> ${result.id || 'N/A'}<br>
+                                    <strong>Name:</strong> ${result.name || 'N/A'}<br>
+                                    <strong>Email:</strong> ${result.email || 'N/A'}<br>
+                                    <strong>Phone:</strong> ${result.phone || 'N/A'}`;
+
+            resultsContainer.appendChild(resultItem);
+        });
+    }
+
+    searchInput.addEventListener("input", () => {
+        searchDatabase(searchInput.value);
+    });
+});
