@@ -1,8 +1,5 @@
 import{createClient} from 'jsr:@supabase/supabase-js@2';
 
-
-
-
 const form = document.getElementById("form");
 
 form.addEventListener("submit", async function (event) {

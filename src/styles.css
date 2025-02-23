@@ -174,11 +174,13 @@ p {
 /* Botón de filtros */
 .filter-button {
     background-color: #eb2028;
+    transition: background-color 0.3s ease;
     color: white;
 }
 
 .filter-button:hover{
     background-color: #b0181e;
+    transition: background-color 0.3s ease;
 }
 
 /* Contenedor del dropdown */
