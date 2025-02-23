@@ -35,6 +35,31 @@ body {
     pointer-events: none; /* No bloquea clics */
     border-radius: 0px 
 }
+
+.loginButton {
+    font-size: 14px;
+    padding: 10px 10px;
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    background-color: #888;
+    border: none;
+    border-radius: 25%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.loginButton:hover {
+    background-color: #eb2028;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+
 .upload-title {
     font-size: 2.5em;
     font-weight: bold;
@@ -60,7 +85,7 @@ body {
     width: px;
     height: 150px;
     margin-bottom: 20px;
-    margin-top: ;
+    margin-top:auto ;
     background-color: rgb(255, 255, 255);
     border: 4px dashed rgb(0, 110, 255); /* Green discontinuous outline */
     clip-path: (10% 10%, 40% 10%, 30% 40%, 70% 40%, 60% 10%, 90% 10%, 100% 50%, 60% 80%, 20% 80%, 10% 50%);
@@ -249,7 +274,7 @@ form button:hover {
     padding: 10px 10px;
     width: 42px;
     height: 42px;
-    margin-left: auto;
+    margin-left: 10px;
     margin-bottom: 10px;
     background-color: #888;
     border: none;
