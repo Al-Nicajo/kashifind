@@ -69,18 +69,18 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("myForm").addEventListener("submit", async function(event) {
         event.preventDefault();
 
-        supabase.auth.getSession().then( session => {
-         console.log(session);
+        supabase.auth.getSession().then(session => {
+            console.log(session);
         });
+
         const username = document.getElementById("username")?.value;
         const name = document.getElementById("name")?.value;
         const description = document.getElementById("description")?.value;
         const tags = Array.from(tagsWrapper.children).map(tag => tag.dataset.tag);
         const tagsCSV = tags.join(",");
-        
-        console.log(username,name, description, tagsCSV, tagsCSV);
-        
-        
+
+        console.log(username, name, description, tagsCSV, tagsCSV);
+
         if (!username || !name || !description) {
             console.error("Form fields are missing!");
             return;
@@ -123,4 +123,17 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Upload successful!");
         }
     });
+
+    // Function that executes once when the user logs in
+    supabase.auth.onAuthStateChange((event, session) => {
+        if (event === 'SIGNED_IN') {
+            console.log('User logged in:', session.user);
+            onUserLogin(session.user);
+        }
+    });
+
+    function onUserLogin(user) {
+        console.log('Executing function after login:', user);
+        // Add any functionality you want after login here
+    }
 });
