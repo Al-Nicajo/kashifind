@@ -86,6 +86,7 @@ body {
     font-size: 18px;
     font-weight: bold;
     text-align: center;
+    padding: 20px;
 }
 
 /* Dropdown Styles */
@@ -262,11 +263,53 @@ form button:hover {
 }
 
 .mainButton:hover {
-    background-color: #1976d2;
+    background-color: #eb2028;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .mainButton:active {
-    background-color: #1565c0;
+    background-color: #e70f16;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.success-tooltip {
+    margin-top: 8px;
+    font-size: 14px;
+    font-style: italic;
+    color: grey;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reset-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #ff4d4d; /* Red cross */
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.reset-button::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 40px; /* Invisible hitbox */
+    height: 40px;
+    background: transparent;
 }

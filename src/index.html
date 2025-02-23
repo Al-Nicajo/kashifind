@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KashiFind</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    body {
+        background-image: url(bg.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
 <body>
     <div class="container">
        <div class="mainHeader">
@@ -41,13 +49,6 @@
             <div class="dropdown-content">
                
                 <label>
-                    APIs
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider"></span>
-                    </label>
-                </label>
-                <label>
                     Documentation
                     <label class="switch">
                         <input type="checkbox">
@@ -66,7 +67,9 @@
         </div>
     </div>
 
-    <div class="search-results"></div>
+    <div class="search-results">
+        <div id="results-container" class="results-container"></div> 
+    </div>
     
     <style>
         .tags-container {

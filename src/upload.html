@@ -6,6 +6,14 @@
     <title>File Upload Page</title>
     <link rel="stylesheet" href="upload.css">
 </head>
+<style>
+    body {
+        background-image: url(bg.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
 <body>
     <div class="container">
         <!-- File Upload Form -->
@@ -13,12 +21,6 @@
             <!-- Title over the upload area -->
             <div class="mainHeader">
                 <h1 class="mainTitle">KashiFind</h1>
-                <a class="mainButton" id="searchMode" href="login.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 490 490">
-                        <path fill="none" stroke="white" stroke-width="36" stroke-linecap="round"
-                            d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110" />
-                    </svg>
-                </a>
                 <a class="mainButton" id="searchMode" href="index.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 490 490">
                         <path fill="none" stroke="white" stroke-width="36" stroke-linecap="round"
@@ -29,7 +31,7 @@
            
             <div class="discontinuous-upload-area" id="uploadArea">
                 <input type="file" id="fileInput" accept="/*" onchange=handleFileChange(event)>
-                <div class="upload-text" id="textarea">Drag & Drop or Click to Upload (MAX 50MB)</div>
+                <div class="upload-text" id="textarea">Drag & Drop or Click to Upload<br>(Max. 50MB)</div>
                 <div id="container"></div>
             </div>
 
@@ -48,7 +50,7 @@
                         <div class="tags"></div>
                         <input type="text" class="tag-input" placeholder="Buscar por etiquetas...">
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" id="submit">Submit</button>
                 </form>
             </div>
         </div>

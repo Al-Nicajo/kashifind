@@ -137,3 +137,55 @@ document.addEventListener("DOMContentLoaded", function() {
         // Add any functionality you want after login here
     }
 });
+
+document.getElementById("myForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const submitButton = document.getElementById("submit");
+    submitButton.disabled = true;
+
+    const successMessage = document.createElement("div");
+    successMessage.textContent = "The file was successfully submitted.";
+    successMessage.classList.add("success-tooltip");
+    submitButton.insertAdjacentElement("afterend", successMessage);
+
+    setTimeout(() => {
+        submitButton.disabled = false;
+        successMessage.remove();
+    }, 1000);
+});
+
+function createResetButton() {
+    let resetButton = document.createElement("button");
+    resetButton.innerHTML = "&times;";
+    resetButton.classList.add("reset-button");
+    resetButton.title = "Remove file and reset form";
+
+    resetButton.addEventListener("click", () => {
+        file = null;
+        fileInput.value = "";
+        document.getElementById("container").textContent = "";
+        document.getElementById("name").value = "";
+        document.getElementById("description").value = "";
+        document.querySelector(".tags").innerHTML = "";
+        tagInput.value = "";
+        document.getElementById("formOptions").style.display = "none";
+        document.getElementById("textarea").style.display = "block"; // Bring back the upload text
+        resetButton.remove();
+    });
+
+    return resetButton;
+}
+
+function displayFile(file) {
+    document.getElementById("container").textContent = file.name;
+    document.getElementById("textarea").style.display = "none";
+    document.getElementById("formOptions").style.display = "block";
+
+    // Ensure only one reset button exists
+    let existingButton = document.querySelector(".reset-button");
+    if (existingButton) existingButton.remove();
+
+    let resetButton = createResetButton();
+    document.getElementById("uploadArea").appendChild(resetButton);
+}
